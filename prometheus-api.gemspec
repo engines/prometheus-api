@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-Kernel.load "./lib/prometheus-api/version.rb"
+Kernel.load "./lib/prometheus/api/version.rb"
 
 Gem::Specification.new do |s|
   s.name = "prometheus-api"
-  s.version = Prometheus::VERSION
+  s.version = Prometheus::API::VERSION
   s.date = Time.now.strftime("%Y-%m-%d")
   s.summary = "Prometheus API Client"
   s.email = "rgh@engines.org"
