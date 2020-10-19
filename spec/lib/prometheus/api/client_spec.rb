@@ -42,9 +42,9 @@ describe Prometheus::API::Client do
 
       res = Prometheus::API::Client.new(uri).query(SnapshotQuery.new(:query => query, :time => timestamp))
 
-      expect(res).to eq(Success({"status" => "success", "data" => {"resultType" => "vector", "result" =>
-                                 [{"metric" => {"__name__" => "up", "instance" => "grenadier.int.filterfish.org:4194",
-                                 "job" => "node"}, "value" => [1602660627, "1"]}]}}))
+      expect(res).to eq(Success({"resultType" => "vector", "result" =>
+                                [{"metric" => {"__name__" => "up", "instance" => "grenadier.int.filterfish.org:4194",
+                                "job" => "node"}, "value" => [1602660627, "1"]}]}))
     end
 
     it "execute a range query returning the value for the specified interval" do
@@ -56,10 +56,10 @@ describe Prometheus::API::Client do
       query = RangeQuery.new(:query => q, :start => start, :end => finish, :step => 1)
       res = Prometheus::API::Client.new(uri).query(query)
 
-      expect(res).to eq(Success({"status" => "success", "data" => {"resultType" => "matrix", "result" =>
+      expect(res).to eq(Success({"resultType" => "matrix", "result" =>
                                 [{"metric" => {"__name__" => "up", "instance" => "grenadier.int.filterfish.org:4194",
                                 "job" => "node"}, "values" =>
-                                [[1602660627, "1"], [1602660628, "1"], [1602660629, "1"]]}]}}))
+                                [[1602660627, "1"], [1602660628, "1"], [1602660629, "1"]]}]}))
     end
   end
 end
