@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
     "source_code_uri"   => s.homepage
   }
 
+  s.add_dependency "addressable",  "~> 2.7"
   s.add_dependency "dry-monads",   "~> 1.3"
   s.add_dependency "dry-struct",   "~> 1.0"
   s.add_dependency "dry-types",    "~> 1.2"
