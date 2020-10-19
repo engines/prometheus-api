@@ -68,7 +68,7 @@ module Prometheus
           res = client.get(query_type, options)
           case res.status
           when 200
-            Success(res.env[:body])
+            Success(MultiJson.load(res.env[:body]))
           when 400
             Failure(MultiJson.load(res.env[:body])["error"])
           when 422
