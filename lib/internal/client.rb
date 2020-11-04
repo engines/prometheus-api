@@ -42,7 +42,13 @@ module Internal
         when 200
           Success(MultiJson.load(res.env[:body])["data"])
         when 400
-          Failure(MultiJson.load(res.env[:body])["error"])
+          # This little gem of inconsitency is because Promeheus returns error messages as
+          # json (correct) and Loki returns plain text (wrong). I have opened an issue ...
+          begin
+            Failure(MultiJson.load(res.env[:body])["error"])
+          rescue MultiJson::ParseError
+            Failure(res.env[:body])
+          end
         when 422
           Failure("Unprocessable Entity: the request was well formed but cannot be executed (RFC4918)")
         when 503
