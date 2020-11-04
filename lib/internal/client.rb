@@ -20,7 +20,7 @@ module Internal
     # @return [Result<Any|String>] The return value. On {Success}, the return JSON, value from the server
     #                              and on {Failure} a {String} containing the reason why it failed.
     def initialize(base_uri, options={})
-      @client = Faraday.new(base_uri, options)
+      @client = Faraday.new(base_uri, options.merge({:headers => default_headers}))
     end
 
     private
@@ -58,6 +58,10 @@ module Internal
 
     def extract_error(e)
       MultiJson.load(e)["error"]
+    end
+
+    def default_headers
+      {"Accept" => "application/json", "User-Agent" => "Engines Ruby Client"}
     end
   end
 end
