@@ -18,7 +18,7 @@ puts "#####################################################################"
 include Dry::Monads[:result]
 include Prometheus::API::Types
 
-uri = Addressable::URI.parse("http://prometheus.int.filterfish.org:9090")
+uri = Addressable::URI.parse("http://localhost:9090")
 
 describe Prometheus::API::Client do
   describe "#query" do
