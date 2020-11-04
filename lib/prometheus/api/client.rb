@@ -31,6 +31,7 @@ class Prometheus::API::Client < Internal::Client
     super uri, options
   end
 
+
   # Run a query againt a Prometheus database
   #
   # @param query [Query] the query to run
@@ -42,7 +43,7 @@ class Prometheus::API::Client < Internal::Client
     when SnapshotQuery
       get("query", query.to_h)
     else
-      raise Runtime, "Unknown query type" # The type system should catch this when we use it.
+      raise RuntimeError, "Unknown query type" # The type system should catch this when we use it.
     end
   end
 end
