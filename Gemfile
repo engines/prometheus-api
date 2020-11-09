@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-gemspec
+
+gemspec :name => 'prometheus-api'
+gemspec :name => 'loki-api'
 
 ruby '>= 2.7.0'
 
