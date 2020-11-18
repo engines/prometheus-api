@@ -2,9 +2,6 @@
 
 source 'https://rubygems.org'
 
-gemspec :name => 'prometheus-api'
-gemspec :name => 'loki-api'
-
 ruby '>= 2.7.0'
 
 group :test do
