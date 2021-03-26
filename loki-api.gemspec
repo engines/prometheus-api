@@ -31,5 +31,12 @@ Gem::Specification.new do |s|
   s.add_dependency "logging",      "~> 2.3"
   s.add_dependency "multi_json",   "~> 1"
 
-  s.files = `git ls-files -z lib`.split(/\0/)
+  s.files = [
+    "./lib/loki/api/types.rb",
+    "./lib/loki/api/client.rb",
+    "./lib/loki/api.rb",
+    "./lib/internal",
+    "./lib/internal/types.rb",
+    "./lib/internal/client.rb"
+  ]
 end
